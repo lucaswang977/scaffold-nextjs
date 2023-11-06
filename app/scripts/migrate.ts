@@ -1,7 +1,31 @@
 import { promises as fs } from "fs"
 import * as path from "path"
-import { db } from "@/lib/database"
-import { FileMigrationProvider, Migrator } from "kysely"
+import { Database } from "@/lib/types"
+import * as dotenv from "dotenv"
+import {
+  FileMigrationProvider,
+  Kysely,
+  Migrator,
+  PostgresDialect,
+} from "kysely"
+import { Pool } from "pg"
+
+dotenv.config()
+
+const dialect = new PostgresDialect({
+  pool: new Pool({
+    database: process.env.PG_DB,
+    host: process.env.PG_HOST,
+    user: process.env.PG_USER,
+    port: process.env.PG_PORT ? parseInt(process.env.PG_PORT) : 5432,
+    password: process.env.PG_PASSWORD,
+    max: 10,
+  }),
+})
+
+const db = new Kysely<Database>({
+  dialect,
+})
 
 async function migrateToLatest() {
   const migrator = new Migrator({

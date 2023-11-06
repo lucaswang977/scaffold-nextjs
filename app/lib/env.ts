@@ -16,8 +16,6 @@ const envSchemaParser = envSchema.safeParse({
   PG_PASSWORD: process.env.PG_PASSWORD,
 })
 
-console.log(process.env)
-
 if (!envSchemaParser.success) {
   throw new Error("Server side environment variables parsing failed.")
 }
