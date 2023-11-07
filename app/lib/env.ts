@@ -3,7 +3,7 @@ import { z } from "zod"
 const envSchema = z.object({
   PG_HOST: z.string().trim().min(1),
   PG_DB: z.string().trim().min(1),
-  PG_PORT: z.number().default(5432),
+  PG_PORT: z.preprocess(Number, z.number().default(5432)),
   PG_USER: z.string().trim().min(1),
   PG_PASSWORD: z.string().trim().min(1),
 })
@@ -17,7 +17,7 @@ const envSchemaParser = envSchema.safeParse({
 })
 
 if (!envSchemaParser.success) {
-  throw new Error("Server side environment variables parsing failed.")
+  throw new Error(envSchemaParser.error.toString())
 }
 
 const envVariables = envSchemaParser.data
