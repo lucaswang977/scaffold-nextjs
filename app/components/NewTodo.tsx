@@ -1,12 +1,10 @@
 "use client"
 
 import { newTodoItem } from "@/lib/actions"
-import { useRouter } from "next/navigation"
 import * as React from "react"
 
 const NewTodo = () => {
   const [text, setText] = React.useState("")
-  const router = useRouter()
 
   return (
     <div className="flex gap-1">
@@ -21,7 +19,6 @@ const NewTodo = () => {
       <button
         onClick={async () => {
           await newTodoItem(text)
-          router.refresh()
         }}
       >
         Add
