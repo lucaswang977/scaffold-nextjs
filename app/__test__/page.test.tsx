@@ -1,16 +1,17 @@
-import Home from "@/page"
+import TodoList from "@/components/TodoList"
 import { render, screen } from "@testing-library/react"
 
 import "@testing-library/jest-dom"
 
-describe("Home", () => {
-  it("renders a heading", () => {
-    render(<Home />)
+describe("TodoList", () => {
+  it("renders todo list", async () => {
+    const Result = await TodoList()
+    render(Result)
 
-    const heading = screen.getByRole("heading", {
-      name: /welcome to next\.js!/i,
+    const addButton = screen.getByRole("button", {
+      name: /add/i,
     })
 
-    expect(heading).toBeInTheDocument()
+    expect(addButton).toBeInTheDocument()
   })
 })
