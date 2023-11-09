@@ -3,4 +3,9 @@ import { twMerge } from "tailwind-merge"
 
 const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
-export default cn
+const delay = (ms: number) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, ms)
+  })
+
+export { cn, delay }

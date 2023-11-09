@@ -1,6 +1,5 @@
 import TodoList from "@/components/TodoList"
-import cn from "@/lib/utility"
-import * as React from "react"
+import { cn } from "@/lib/utility"
 
 export default function Home() {
   return (
