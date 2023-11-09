@@ -1,13 +1,13 @@
 "use server"
 
-import { db } from "@/lib/dbconn"
+import db from "@/lib/dbconn"
 import { revalidateTag } from "next/cache"
 
 export async function newTodoItem(text: string) {
   const result = await db
     .insertInto("todo")
     .values({
-      text: text,
+      text,
       finished: false,
     })
     .returningAll()
@@ -31,7 +31,7 @@ export async function todoItemMarkFinished(id: string, finished: boolean) {
   const result = await db
     .updateTable("todo")
     .where("id", "=", id)
-    .set({ finished: finished })
+    .set({ finished })
     .execute()
 
   revalidateTag(`todo:${id}`)

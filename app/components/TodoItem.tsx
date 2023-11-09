@@ -3,8 +3,8 @@
 import { todoItemDelete, todoItemMarkFinished } from "@/lib/actions"
 import { Todo } from "@/lib/types"
 
-const TodoItem = (props: { todo: Todo }) => {
-  const todo = props.todo
+function TodoItem(props: { todo: Todo }) {
+  const { todo } = props
   return (
     <div key={todo.id} className="flex gap-1">
       <p>{todo.text}</p>
@@ -17,6 +17,7 @@ const TodoItem = (props: { todo: Todo }) => {
         checked={todo.finished}
       />
       <button
+        type="button"
         onClick={async () => {
           await todoItemDelete(todo.id)
         }}

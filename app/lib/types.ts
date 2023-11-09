@@ -1,9 +1,5 @@
 import { Generated, Insertable, Selectable, Updateable } from "kysely"
 
-export interface Database {
-  todo: TodoTable
-}
-
 export interface TodoTable {
   id: Generated<string>
   text: string
@@ -15,3 +11,7 @@ export interface TodoTable {
 export type Todo = Selectable<TodoTable>
 export type NewTodo = Insertable<TodoTable>
 export type UpdateTodo = Updateable<TodoTable>
+
+export interface Database {
+  todo: TodoTable
+}

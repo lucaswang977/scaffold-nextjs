@@ -1,5 +1,5 @@
-import { TodoList } from "@/components/TodoList"
-import { cn } from "@/lib/utility"
+import TodoList from "@/components/TodoList"
+import cn from "@/lib/utility"
 import * as React from "react"
 
 export default function Home() {

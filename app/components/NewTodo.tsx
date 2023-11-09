@@ -3,7 +3,7 @@
 import { newTodoItem } from "@/lib/actions"
 import * as React from "react"
 
-const NewTodo = () => {
+function NewTodo() {
   const [text, setText] = React.useState("")
 
   return (
@@ -17,6 +17,7 @@ const NewTodo = () => {
         className="rounded-sm border-b-[1px] border-gray-500"
       />
       <button
+        type="button"
         onClick={async () => {
           await newTodoItem(text)
         }}

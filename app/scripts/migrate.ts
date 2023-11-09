@@ -9,15 +9,21 @@ import {
   PostgresDialect,
 } from "kysely"
 import { Pool } from "pg"
+import pino from "pino"
 
 dotenv.config()
+
+const logger = pino({
+  name: "migrate",
+  level: "debug",
+})
 
 const dialect = new PostgresDialect({
   pool: new Pool({
     database: process.env.PG_DB,
     host: process.env.PG_HOST,
     user: process.env.PG_USER,
-    port: process.env.PG_PORT ? parseInt(process.env.PG_PORT) : 5432,
+    port: process.env.PG_PORT ? parseInt(process.env.PG_PORT, 10) : 5432,
     password: process.env.PG_PASSWORD,
     max: 10,
   }),
@@ -41,17 +47,19 @@ async function migrateToLatest() {
 
   results?.forEach((it) => {
     if (it.status === "Success") {
-      console.log(`migration "${it.migrationName}" was executed successfully`)
+      logger.info(`migration "${it.migrationName}" was executed successfully`)
     } else if (it.status === "Error") {
-      console.error(`failed to execute migration "${it.migrationName}"`)
+      logger.error(`failed to execute migration "${it.migrationName}"`)
     }
   })
 
   if (error) {
-    console.error("failed to migrate")
-    console.error(error)
+    logger.error("failed to migrate")
+    logger.error(error)
     process.exit(1)
   }
+
+  logger.info("Database migration finished.")
 
   await db.destroy()
 }
