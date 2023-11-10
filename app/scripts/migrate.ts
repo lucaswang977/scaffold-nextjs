@@ -1,6 +1,7 @@
 import { promises as fs } from "fs"
 import * as path from "path"
 import { Database } from "@/lib/types"
+import { logger } from "@/lib/utility"
 import * as dotenv from "dotenv"
 import {
   FileMigrationProvider,
@@ -9,14 +10,8 @@ import {
   PostgresDialect,
 } from "kysely"
 import { Pool } from "pg"
-import pino from "pino"
 
 dotenv.config()
-
-const logger = pino({
-  name: "migrate",
-  level: "debug",
-})
 
 const dialect = new PostgresDialect({
   pool: new Pool({

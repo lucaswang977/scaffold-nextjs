@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const { version } = require("./package.json")
+const nextConfig = {
+  publicRuntimeConfig: {
+    version,
+  },
+}
 
 module.exports = () => {
   return nextConfig

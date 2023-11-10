@@ -1,7 +1,6 @@
 "use server"
 
 import db from "@/lib/dbconn"
-import { delay } from "@/lib/utility"
 import { revalidateTag } from "next/cache"
 
 export async function newTodoItem(text: string) {
@@ -20,8 +19,6 @@ export async function newTodoItem(text: string) {
 }
 
 export async function fetchTodoList() {
-  await delay(2000)
-
   const result = await db
     .selectFrom("todo")
     .selectAll()

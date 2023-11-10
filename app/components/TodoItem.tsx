@@ -6,7 +6,7 @@ import { Todo } from "@/lib/types"
 function TodoItem(props: { todo: Todo }) {
   const { todo } = props
   return (
-    <div key={todo.id} className="flex gap-1">
+    <div key={todo.id} className="flex gap-1 dark:text-white">
       <p>{todo.text}</p>
       <p>{todo.created_at && todo.created_at.toUTCString()}</p>
       <input

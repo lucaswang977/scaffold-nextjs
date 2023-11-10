@@ -14,7 +14,7 @@ function TodoList() {
   return (
     <div className="flex flex-col gap-1">
       <NewTodo />
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<p className="dark:text-white">Loading...</p>}>
         <RealTodoList />
       </Suspense>
     </div>
