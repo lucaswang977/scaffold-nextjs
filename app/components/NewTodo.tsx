@@ -7,7 +7,7 @@ function NewTodo() {
   const [text, setText] = React.useState("")
 
   return (
-    <div className="flex gap-1 dark:text-white">
+    <div className="flex gap-1">
       <input
         type="text"
         value={text}

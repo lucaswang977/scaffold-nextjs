@@ -39,7 +39,7 @@ function ThemeChanger() {
   }
 
   return (
-    <div className="flex gap-2 dark:text-white">
+    <div className="flex gap-2">
       The current theme is: {theme}
       <button type="button" onClick={() => setThemeThenRefresh("light")}>
         Light Mode

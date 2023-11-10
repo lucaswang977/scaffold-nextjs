@@ -12,10 +12,9 @@ export default function Home() {
       className={cn(
         "flex min-h-screen flex-col items-center justify-center",
         "p-24",
-        "dark:bg-black",
       )}
     >
-      <h1 className="dark:text-white">Todo list sample project</h1>
+      <h1>Todo list sample project</h1>
       <TodoList />
       <ThemeChanger />
       <p>Current version is: {version}</p>
