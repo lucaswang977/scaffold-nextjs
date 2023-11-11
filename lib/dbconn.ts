@@ -1,5 +1,5 @@
-import envVariables from "@/lib/env"
-import { Database } from "@/lib/types"
+import envVariables from "@/l/env"
+import { Database } from "@/l/types"
 import { Kysely, PostgresDialect } from "kysely"
 import { Pool } from "pg"
 

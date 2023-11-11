@@ -1,7 +1,7 @@
 "use client"
 
-import { todoItemDelete, todoItemMarkFinished } from "@/lib/actions"
-import { Todo } from "@/lib/types"
+import { todoItemDelete, todoItemMarkFinished } from "@/l/actions"
+import { Todo } from "@/l/types"
 
 function TodoItem(props: { todo: Todo }) {
   const { todo } = props

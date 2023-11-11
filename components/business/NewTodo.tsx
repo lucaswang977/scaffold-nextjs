@@ -1,6 +1,6 @@
 "use client"
 
-import { newTodoItem } from "@/lib/actions"
+import { newTodoItem } from "@/l/actions"
 import * as React from "react"
 
 function NewTodo() {

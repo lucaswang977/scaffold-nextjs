@@ -1,6 +1,6 @@
 "use client"
 
-import { clogger } from "@/lib/utility"
+import { clogger } from "@/l/utility"
 import { deleteCookie, getCookie, setCookie } from "cookies-next"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"

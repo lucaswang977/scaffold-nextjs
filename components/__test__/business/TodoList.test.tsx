@@ -1,7 +1,7 @@
 // We cannot test the component which include another async server components
 // Watching for the solution: https://github.com/testing-library/react-testing-library/issues/1209
 
-import TodoList from "@/components/TodoList"
+import TodoList from "@/c/business/TodoList"
 import { render, screen } from "@testing-library/react"
 
 import "@testing-library/jest-dom"

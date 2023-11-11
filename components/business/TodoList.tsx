@@ -1,6 +1,6 @@
-import NewTodo from "@/components/NewTodo"
-import TodoItem from "@/components/TodoItem"
-import { fetchTodoList } from "@/lib/actions"
+import NewTodo from "@/c/business/NewTodo"
+import TodoItem from "@/c/business/TodoItem"
+import { fetchTodoList } from "@/l/actions"
 import { Suspense } from "react"
 
 async function RealTodoList() {

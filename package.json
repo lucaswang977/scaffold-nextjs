@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch --detectOpenHandles",
-    "migrate": "tsx ./app/scripts/migrate.ts"
+    "migrate": "tsx ./app/scripts/migrate.ts | pino-pretty"
   },
   "dependencies": {
     "clsx": "^2.0.0",

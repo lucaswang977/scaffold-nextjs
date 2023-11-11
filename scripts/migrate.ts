@@ -1,7 +1,7 @@
 import { promises as fs } from "fs"
 import * as path from "path"
 import { Database } from "@/lib/types"
-import { logger } from "@/lib/utility"
+import { slogger } from "@/lib/utility"
 import * as dotenv from "dotenv"
 import {
   FileMigrationProvider,
@@ -42,19 +42,19 @@ async function migrateToLatest() {
 
   results?.forEach((it) => {
     if (it.status === "Success") {
-      logger.info(`migration "${it.migrationName}" was executed successfully`)
+      slogger.info(`migration "${it.migrationName}" was executed successfully`)
     } else if (it.status === "Error") {
-      logger.error(`failed to execute migration "${it.migrationName}"`)
+      slogger.error(`failed to execute migration "${it.migrationName}"`)
     }
   })
 
   if (error) {
-    logger.error("failed to migrate")
-    logger.error(error)
+    slogger.error("failed to migrate")
+    slogger.error(error)
     process.exit(1)
   }
 
-  logger.info("Database migration finished.")
+  slogger.info("Database migration finished.")
 
   await db.destroy()
 }

@@ -1,6 +1,6 @@
-import ThemeChanger from "@/components/ThemeChanger"
-import TodoList from "@/components/TodoList"
-import { cn } from "@/lib/utility"
+import TodoList from "@/c/business/TodoList"
+import ThemeChanger from "@/c/reusable/ThemeChanger"
+import { cn } from "@/l/utility"
 import getConfig from "next/config"
 
 export default function Home() {

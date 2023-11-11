@@ -1,10 +1,10 @@
-import { slogger } from "@/lib/utility"
+import { slogger } from "@/l/utility"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { cookies } from "next/headers"
 import * as React from "react"
 
-import "./globals.css"
+import "@/s/globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 

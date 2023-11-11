@@ -1,6 +1,6 @@
 "use server"
 
-import db from "@/lib/dbconn"
+import db from "@/l/dbconn"
 import { revalidateTag } from "next/cache"
 
 export async function newTodoItem(text: string) {
