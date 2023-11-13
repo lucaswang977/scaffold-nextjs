@@ -1,4 +1,4 @@
-import { COOKIE_THEME_NAME } from "@/l/constants"
+import { COOKIE_THEME_NAME } from "@/c/reusable/theme-changer"
 import { cn, slogger } from "@/l/utility"
 import type { Metadata } from "next"
 import { Inter as FontSans } from "next/font/google"

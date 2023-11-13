@@ -1,5 +1,6 @@
+import NewTodo from "@/c/business/NewTodo"
 import TodoList from "@/c/business/TodoList"
-import ThemeChanger from "@/c/reusable/ThemeChanger"
+import { ThemeChanger } from "@/c/reusable/theme-changer"
 import { cn } from "@/l/utility"
 import getConfig from "next/config"
 
@@ -11,13 +12,15 @@ export default function Home() {
     <main
       className={cn(
         "container min-h-screen",
-        "flex flex-col items-center justify-center",
+        "flex flex-col items-center justify-center space-y-2",
       )}
     >
-      <h1>Todo list sample project</h1>
+      <NewTodo />
       <TodoList />
-      <ThemeChanger />
-      <p>Current version is: {version}</p>
+      <div className="absolute bottom-1 mb-4 flex items-center gap-2 text-sm text-gray-500">
+        <p>v{version}</p>
+        <ThemeChanger />
+      </div>
     </main>
   )
 }

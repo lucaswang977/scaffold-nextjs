@@ -1,4 +1,3 @@
-import NewTodo from "@/c/business/NewTodo"
 import TodoItem from "@/c/business/TodoItem"
 import { fetchTodoList } from "@/l/actions"
 import { Suspense } from "react"
@@ -12,8 +11,7 @@ async function RealTodoList() {
 
 function TodoList() {
   return (
-    <div className="flex flex-col gap-1">
-      <NewTodo />
+    <div className="flex flex-col space-y-1">
       <Suspense fallback={<p>Loading...</p>}>
         <RealTodoList />
       </Suspense>

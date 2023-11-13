@@ -8,7 +8,6 @@ function TodoItem(props: { todo: Todo }) {
   return (
     <div key={todo.id} className="flex gap-1">
       <p>{todo.text}</p>
-      <p>{todo.created_at && todo.created_at.toUTCString()}</p>
       <input
         type="checkbox"
         onChange={async (ev) => {
