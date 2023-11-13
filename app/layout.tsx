@@ -1,4 +1,4 @@
-import { COOKIE_THEME_NAME } from "@/c/reusable/theme-changer"
+import constants from "@/l/constants"
 import { cn, slogger } from "@/l/utility"
 import type { Metadata } from "next"
 import { Inter as FontSans } from "next/font/google"
@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const cookieStore = cookies()
-  const theme = cookieStore.get(COOKIE_THEME_NAME)
+  const theme = cookieStore.get(constants.COOKIE_THEME_NAME)
 
   slogger.info(`Get theme from cookie: ${theme ? theme.value : "(system)"}`)
 

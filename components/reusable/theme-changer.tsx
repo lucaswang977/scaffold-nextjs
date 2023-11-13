@@ -15,6 +15,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/c/shadui/tooltip"
+import constants from "@/l/constants"
 import { clogger } from "@/l/utility"
 import { deleteCookie, getCookie, setCookie } from "cookies-next"
 import { Check, Moon, Sun, SunMoon } from "lucide-react"
@@ -22,19 +23,18 @@ import { useRouter } from "next/navigation"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
 type ThemeType = "light" | "dark" | "system"
-const COOKIE_THEME_NAME = "x-local-theme"
 
 const getCookieTheme = (): ThemeType => {
-  const theme = getCookie(COOKIE_THEME_NAME)
+  const theme = getCookie(constants.COOKIE_THEME_NAME)
   if (theme) return theme as ThemeType
   return "system"
 }
 
 const setCookieTheme = (themeInCookie: ThemeType) => {
   if (themeInCookie === "system") {
-    deleteCookie(COOKIE_THEME_NAME)
+    deleteCookie(constants.COOKIE_THEME_NAME)
   } else {
-    setCookie(COOKIE_THEME_NAME, themeInCookie)
+    setCookie(constants.COOKIE_THEME_NAME, themeInCookie)
   }
 
   clogger.trace(`Theme set to ${themeInCookie}`)
@@ -129,4 +129,4 @@ function ThemeChanger() {
   )
 }
 
-export { ThemeChanger, useCookieTheme, COOKIE_THEME_NAME }
+export { ThemeChanger, useCookieTheme }
