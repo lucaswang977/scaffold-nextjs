@@ -12,14 +12,22 @@ export default function Home() {
     <main
       className={cn(
         "container min-h-screen",
-        "flex flex-col items-center justify-center space-y-2",
+        "flex flex-col items-center justify-between",
       )}
     >
-      <NewTodo />
-      <TodoList />
-      <div className="absolute bottom-1 mb-4 flex items-center gap-2 text-sm text-gray-500">
-        <p>v{version}</p>
-        <ThemeChanger />
+      <div />
+      <div className="flex flex-col items-center space-y-1">
+        <TodoList />
+        <NewTodo />
+      </div>
+      <div className="mb-3 flex flex-col items-center space-y-1">
+        <div className="flex items-center gap-2 text-sm text-gray-500">
+          <p>v{version}</p>
+          <ThemeChanger />
+        </div>
+        <p className="text-sm text-gray-500">
+          A small todo list app powered by Next.js 14
+        </p>
       </div>
     </main>
   )

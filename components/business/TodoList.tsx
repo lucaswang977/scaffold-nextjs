@@ -6,7 +6,12 @@ async function RealTodoList() {
   const dataFromDB = await fetchTodoList()
 
   if (dataFromDB)
-    return dataFromDB.map((item) => <TodoItem key={item.id} todo={item} />)
+    return dataFromDB.map((item, index) => (
+      <div className="flex space-x-1">
+        <p>{index + 1}.</p>
+        <TodoItem key={item.id} todo={item} />
+      </div>
+    ))
 }
 
 function TodoList() {

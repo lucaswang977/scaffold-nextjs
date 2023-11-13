@@ -7,6 +7,10 @@ import * as React from "react"
 
 function NewTodo() {
   const [text, setText] = React.useState("")
+  const handleNewItemInput = async (t: string) => {
+    await newTodoItem(t)
+    setText("")
+  }
 
   return (
     <div className="flex w-full max-w-sm items-center space-x-2">
@@ -14,6 +18,11 @@ function NewTodo() {
         type="text"
         value={text}
         placeholder="What are you going to do today..."
+        onKeyDown={async (ev) => {
+          if (ev.key === "Enter") {
+            await handleNewItemInput(text)
+          }
+        }}
         onChange={(v) => {
           setText(v.currentTarget.value)
         }}
@@ -21,7 +30,7 @@ function NewTodo() {
       <Button
         type="button"
         onClick={async () => {
-          await newTodoItem(text)
+          handleNewItemInput(text)
         }}
       >
         Add
