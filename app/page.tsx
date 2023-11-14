@@ -16,18 +16,16 @@ export default function Home() {
       )}
     >
       <div />
-      <div className="flex flex-col items-center space-y-1">
-        <TodoList />
+      <div className="flex flex-col items-center space-y-2">
         <NewTodo />
+        <TodoList />
       </div>
-      <div className="mb-3 flex flex-col items-center space-y-1">
-        <div className="flex items-center gap-2 text-sm text-gray-500">
+      <div className="mb-3 flex flex-col items-center space-y-1 text-xs text-gray-400">
+        <div className="flex items-center space-x-2">
           <p>v{version}</p>
           <ThemeChanger />
         </div>
-        <p className="text-sm text-gray-500">
-          A small todo list app powered by Next.js 14
-        </p>
+        <p>A small todo list app written using Next.js 14</p>
       </div>
     </main>
   )

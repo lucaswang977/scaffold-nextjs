@@ -2,14 +2,13 @@ import TodoItem from "@/c/business/TodoItem"
 import { fetchTodoList } from "@/l/actions"
 import { Suspense } from "react"
 
-async function RealTodoList() {
-  const dataFromDB = await fetchTodoList()
+async function TodoListComp({ finished }: { finished: boolean }) {
+  const dataFromDB = await fetchTodoList(finished)
 
   if (dataFromDB)
     return dataFromDB.map((item, index) => (
       <div className="flex space-x-1">
-        <p>{index + 1}.</p>
-        <TodoItem key={item.id} todo={item} />
+        <TodoItem key={item.id} todo={item} seq={index + 1} />
       </div>
     ))
 }
@@ -18,7 +17,11 @@ function TodoList() {
   return (
     <div className="flex flex-col space-y-1">
       <Suspense fallback={<p>Loading...</p>}>
-        <RealTodoList />
+        <TodoListComp finished={false} />
+      </Suspense>
+
+      <Suspense fallback={<p>Loading...</p>}>
+        <TodoListComp finished />
       </Suspense>
     </div>
   )

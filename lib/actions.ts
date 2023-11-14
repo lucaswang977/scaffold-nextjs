@@ -9,6 +9,7 @@ export async function newTodoItem(text: string) {
     .values({
       text,
       finished: false,
+      priority: 0,
     })
     .returningAll()
     .executeTakeFirstOrThrow()
@@ -18,12 +19,23 @@ export async function newTodoItem(text: string) {
   return result
 }
 
-export async function fetchTodoList() {
-  const result = await db
-    .selectFrom("todo")
-    .selectAll()
-    .orderBy("created_at desc")
-    .execute()
+export async function fetchTodoList(finished?: boolean) {
+  const result =
+    finished === undefined
+      ? await db
+          .selectFrom("todo")
+          .selectAll()
+          .orderBy("priority desc")
+          .orderBy("created_at desc")
+          .execute()
+      : await db
+          .selectFrom("todo")
+          .selectAll()
+          .orderBy("priority desc")
+          .orderBy("created_at desc")
+          .where("finished", "=", finished)
+          .execute()
+
   return result
 }
 

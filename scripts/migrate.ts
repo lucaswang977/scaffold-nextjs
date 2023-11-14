@@ -1,7 +1,7 @@
 import { promises as fs } from "fs"
 import * as path from "path"
-import { Database } from "@/lib/types"
-import { slogger } from "@/lib/utility"
+import { Database } from "@/l/types"
+import { slogger } from "@/l/utility"
 import * as dotenv from "dotenv"
 import {
   FileMigrationProvider,

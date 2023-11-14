@@ -29,6 +29,23 @@ export default function RootLayout({
 
   let value = (
     <html lang="en">
+      <head>
+        <script
+          /* eslint react/no-danger:off */
+          dangerouslySetInnerHTML={{
+            __html: `,
+const mediaQueryLlistener = (e: MediaQueryListEvent) => {
+  if (e.matches) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+}
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', mediaQueryLlistener)
+`,
+          }}
+        />
+      </head>
       <body className={cn(fontSans.variable)}>{children}</body>
     </html>
   )

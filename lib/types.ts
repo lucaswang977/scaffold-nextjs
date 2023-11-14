@@ -4,6 +4,7 @@ export interface TodoTable {
   id: Generated<string>
   text: string
   finished: boolean
+  priority: number
   created_at: Generated<Date>
   updated_at: Generated<Date>
 }
