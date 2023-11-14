@@ -33,16 +33,7 @@ export default function RootLayout({
         <script
           /* eslint react/no-danger:off */
           dangerouslySetInnerHTML={{
-            __html: `,
-const mediaQueryLlistener = (e: MediaQueryListEvent) => {
-  if (e.matches) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-}
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', mediaQueryLlistener)
-`,
+            __html: constants.SCRIPT_FOR_THEME_AUTOSWITCH,
           }}
         />
       </head>
