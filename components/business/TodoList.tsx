@@ -1,5 +1,9 @@
 import TodoItem from "@/c/business/TodoItem"
-import { fetchTodoList } from "@/l/actions"
+import {
+  fetchTodoList,
+  todoItemDelete,
+  todoItemMarkFinished,
+} from "@/l/actions"
 import { Suspense } from "react"
 
 async function TodoListComp({ finished }: { finished: boolean }) {
@@ -8,7 +12,21 @@ async function TodoListComp({ finished }: { finished: boolean }) {
   if (dataFromDB)
     return dataFromDB.map((item, index) => (
       <div className="flex space-x-1">
-        <TodoItem key={item.id} todo={item} seq={index + 1} />
+        <TodoItem
+          key={item.id}
+          data={item}
+          seq={index + 1}
+          handleFinished={async (id, setFinished) => {
+            "use server"
+
+            await todoItemMarkFinished(id, setFinished)
+          }}
+          handleRemoved={async (id) => {
+            "use server"
+
+            await todoItemDelete(id)
+          }}
+        />
       </div>
     ))
 }
