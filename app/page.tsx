@@ -1,6 +1,5 @@
-import NewTodo from "@/c/business/NewTodo"
 import TodoList from "@/c/business/TodoList"
-import { ThemeChanger } from "@/c/reusable/theme-changer"
+import { ThemeSwitcher } from "@/c/reusable/theme-switcher"
 import { cn } from "@/l/utility"
 import getConfig from "next/config"
 
@@ -16,14 +15,11 @@ export default function Home() {
       )}
     >
       <div />
-      <div className="flex flex-col items-center space-y-2">
-        <NewTodo />
-        <TodoList />
-      </div>
+      <TodoList />
       <div className="mb-3 flex flex-col items-center space-y-1 text-xs text-gray-400">
         <div className="flex items-center space-x-2">
           <p>v{version}</p>
-          <ThemeChanger />
+          <ThemeSwitcher />
         </div>
         <p>A small todo list app written using Next.js 14</p>
       </div>

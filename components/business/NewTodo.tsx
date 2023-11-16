@@ -2,13 +2,16 @@
 
 import { Button } from "@/c/shadui/button"
 import { Input } from "@/c/shadui/input"
-import { newTodoItem } from "@/l/actions"
 import * as React from "react"
 
-function NewTodo() {
+interface NewTodoProps {
+  handleNewItem: (t: string) => void
+}
+
+function NewTodo({ handleNewItem }: NewTodoProps) {
   const [text, setText] = React.useState("")
-  const handleNewItemInput = async (t: string) => {
-    await newTodoItem(t)
+  const handleNewItemInput = (t: string) => {
+    handleNewItem(t)
     setText("")
   }
 
@@ -18,9 +21,9 @@ function NewTodo() {
         type="text"
         value={text}
         placeholder="What are you going to do today..."
-        onKeyDown={async (ev) => {
+        onKeyDown={(ev) => {
           if (ev.key === "Enter") {
-            await handleNewItemInput(text)
+            handleNewItemInput(text)
           }
         }}
         onChange={(v) => {
@@ -29,7 +32,7 @@ function NewTodo() {
       />
       <Button
         type="button"
-        onClick={async () => {
+        onClick={() => {
           handleNewItemInput(text)
         }}
       >

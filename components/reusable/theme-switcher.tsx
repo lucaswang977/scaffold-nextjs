@@ -93,7 +93,7 @@ function useCookieTheme(
   return [theme, setTheme]
 }
 
-function ThemeChanger() {
+function ThemeSwitcher() {
   const [theme, setTheme] = useCookieTheme("system")
   const [name, icon] = getThemeNameIcon(theme)
 
@@ -129,4 +129,4 @@ function ThemeChanger() {
   )
 }
 
-export { ThemeChanger, useCookieTheme }
+export { ThemeSwitcher, useCookieTheme }

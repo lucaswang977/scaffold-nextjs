@@ -1,6 +1,8 @@
+import NewTodo from "@/c/business/NewTodo"
 import TodoItem from "@/c/business/TodoItem"
 import {
   fetchTodoList,
+  newTodoItem,
   todoItemDelete,
   todoItemMarkFinished,
 } from "@/l/actions"
@@ -19,12 +21,12 @@ async function TodoListComp({ finished }: { finished: boolean }) {
           handleFinished={async (id, setFinished) => {
             "use server"
 
-            await todoItemMarkFinished(id, setFinished)
+            await todoItemMarkFinished(id, setFinished, true)
           }}
           handleRemoved={async (id) => {
             "use server"
 
-            await todoItemDelete(id)
+            await todoItemDelete(id, true)
           }}
         />
       </div>
@@ -33,14 +35,22 @@ async function TodoListComp({ finished }: { finished: boolean }) {
 
 function TodoList() {
   return (
-    <div className="flex flex-col space-y-1">
-      <Suspense fallback={<p>Loading...</p>}>
-        <TodoListComp finished={false} />
-      </Suspense>
+    <div className="flex flex-col items-center space-y-4">
+      <NewTodo
+        handleNewItem={async (t) => {
+          "use server"
 
-      <Suspense fallback={<p>Loading...</p>}>
-        <TodoListComp finished />
-      </Suspense>
+          await newTodoItem(t, true)
+        }}
+      />
+      <div className="flex flex-col items-start">
+        <Suspense fallback={<p>Loading...</p>}>
+          <TodoListComp finished={false} />
+        </Suspense>
+        <Suspense fallback={<p>Loading...</p>}>
+          <TodoListComp finished />
+        </Suspense>
+      </div>
     </div>
   )
 }

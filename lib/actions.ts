@@ -1,23 +1,5 @@
-"use server"
-
 import db from "@/l/dbconn"
 import { revalidateTag } from "next/cache"
-
-export async function newTodoItem(text: string) {
-  const result = await db
-    .insertInto("todo")
-    .values({
-      text,
-      finished: false,
-      priority: 0,
-    })
-    .returningAll()
-    .executeTakeFirstOrThrow()
-
-  revalidateTag(`todo:${result.id}`)
-
-  return result
-}
 
 export async function fetchTodoList(finished?: boolean) {
   const result =
@@ -39,22 +21,42 @@ export async function fetchTodoList(finished?: boolean) {
   return result
 }
 
-export async function todoItemMarkFinished(id: string, finished: boolean) {
+export async function newTodoItem(text: string, revalidate?: boolean) {
+  const result = await db
+    .insertInto("todo")
+    .values({
+      text,
+      finished: false,
+      priority: 0,
+    })
+    .returningAll()
+    .executeTakeFirstOrThrow()
+
+  if (revalidate === true) revalidateTag(`todo:${result.id}`)
+
+  return result
+}
+
+export async function todoItemMarkFinished(
+  id: string,
+  finished: boolean,
+  revalidate?: boolean,
+) {
   const result = await db
     .updateTable("todo")
     .where("id", "=", id)
     .set({ finished })
     .execute()
 
-  revalidateTag(`todo:${id}`)
+  if (revalidate === true) revalidateTag(`todo:${id}`)
 
   return result.length > 0
 }
 
-export async function todoItemDelete(id: string) {
+export async function todoItemDelete(id: string, revalidate?: boolean) {
   const result = await db.deleteFrom("todo").where("id", "=", id).execute()
 
-  revalidateTag(`todo:${id}`)
+  if (revalidate === true) revalidateTag(`todo:${id}`)
 
   return result.length > 0
 }
