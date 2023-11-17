@@ -101,7 +101,13 @@ function ThemeSwitcher() {
     <div className="flex gap-2">
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <Button variant="ghost" size="icon" className="h-4 w-4" asChild>
+          <Button
+            data-testid="theme-switcher"
+            variant="ghost"
+            size="icon"
+            className="h-4 w-4"
+            asChild
+          >
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>{icon}</TooltipTrigger>
@@ -117,6 +123,7 @@ function ThemeSwitcher() {
           <DropdownMenuSeparator />
           {["light", "dark", "system"].map((item) => (
             <ThemeDropdownMenuItem
+              data-testid={`ts-${item}`}
               key={item}
               currentTheme={theme}
               settingTheme={item as ThemeType}
