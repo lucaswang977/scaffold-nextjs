@@ -6,7 +6,7 @@
     "plugin:testing-library/react",
     "prettier"
   ],
-  "plugins": ["jest", "testing-library", "prettier", "cypress"],
+  "plugins": ["jest", "testing-library", "prettier"],
   "rules": {
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/quotes": "off",

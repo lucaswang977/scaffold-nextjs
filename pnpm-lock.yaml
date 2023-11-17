@@ -100,9 +100,6 @@ devDependencies:
   dotenv-cli:
     specifier: ^7.3.0
     version: 7.3.0
-  dotenv-run-script:
-    specifier: ^0.4.1
-    version: 0.4.1
   eslint:
     specifier: ^8
     version: 8.52.0
@@ -3282,14 +3279,6 @@ packages:
   /dotenv-expand@10.0.0:
     resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
     engines: {node: '>=12'}
-    dev: true
-
-  /dotenv-run-script@0.4.1:
-    resolution: {integrity: sha512-5mHhOVcSMY7X9lC50xjJL2oKiW75gqvpZpUmJRrFMOAdbNZ+hk8z1wIG9Rh/noEzbgRqYd34EmOpbStc1d+GOg==}
-    hasBin: true
-    dependencies:
-      dotenv: 16.3.1
-      dotenv-expand: 10.0.0
     dev: true
 
   /dotenv@16.3.1:

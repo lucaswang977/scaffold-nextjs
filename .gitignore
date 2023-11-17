@@ -39,3 +39,6 @@ bun.lockb
 
 .env
 .env.local
+
+cypress/videos
+cypress/screenshots
