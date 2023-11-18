@@ -19,17 +19,17 @@ interface TodoItemProps {
 
 function TodoItem({ data, seq, handleRemoved, handleFinished }: TodoItemProps) {
   return (
-    <div key={data.id} className="group flex space-x-1">
+    <div key={data.id} data-testid="todo-item" className="group flex space-x-1">
       <div className="flex items-center space-x-1 opacity-0 transition-all group-hover:opacity-100">
         <Checkbox
-          data-testid="finish-checkbox"
+          data-testid="todo-finish"
           onCheckedChange={(checked) => {
             handleFinished(data.id, checked as boolean)
           }}
           checked={data.finished}
         />
         <Button
-          data-testid="remove-button"
+          data-testid="todo-remove"
           onClick={() => {
             handleRemoved(data.id)
           }}

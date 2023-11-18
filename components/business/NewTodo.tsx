@@ -18,6 +18,7 @@ function NewTodo({ handleNewItem }: NewTodoProps) {
   return (
     <div className="flex w-full max-w-sm items-center space-x-2">
       <Input
+        data-testid="todo-input"
         type="text"
         value={text}
         placeholder="What are you going to do today..."

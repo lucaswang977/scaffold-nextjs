@@ -67,6 +67,7 @@ function ThemeDropdownMenuItem({
   return (
     <DropdownMenuItem
       className="grid grid-cols-3"
+      data-testid={`ts-${settingTheme}`}
       onClick={() => setThemeThenRefresh(settingTheme)}
     >
       <div className="col-span-2 flex space-x-2">
@@ -120,14 +121,8 @@ function ThemeSwitcher() {
   return (
     <div className="flex gap-2">
       <DropdownMenu>
-        <DropdownMenuTrigger>
-          <Button
-            data-testid="theme-switcher"
-            variant="ghost"
-            size="icon"
-            className="h-4 w-4"
-            asChild
-          >
+        <DropdownMenuTrigger data-testid="theme-switcher">
+          <Button variant="ghost" size="icon" className="h-4 w-4" asChild>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>{icon}</TooltipTrigger>
@@ -143,7 +138,6 @@ function ThemeSwitcher() {
           <DropdownMenuSeparator />
           {["light", "dark", "system"].map((item) => (
             <ThemeDropdownMenuItem
-              data-testid={`ts-${item}`}
               key={item}
               currentTheme={theme}
               settingTheme={item as ThemeType}
