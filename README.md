@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+My webapp skeleton project. At present, a simple postgresql backed Todo list app is provided.
 
 ## Getting Started
 
@@ -16,21 +16,38 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## What are included
 
-## Learn More
+### Coding styles 
+* Prettier working with [typescript-eslint](https://typescript-eslint.io/)
+* Airbnb coding style [base](https://github.com/airbnb/javascript) and [typescript](https://github.com/iamturns/eslint-config-airbnb-typescript) eslint plugins
+* Prettier plugin to [sorting imports](https://github.com/IanVS/prettier-plugin-sort-imports) and [tailwind classes](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
+* Typescript directory alias configured (@/)
 
-To learn more about Next.js, take a look at the following resources:
+### Common dependencies
+* [Next.js 14](https://nextjs.org/docs) (with app router)
+* Logging with [Pino](https://getpino.io/), together with [pino-pretty](https://github.com/pinojs/pino-pretty) for output readable
+* Version can be fetched from package.json by next/config
+* [Zod](https://github.com/colinhacks/zod) for runtime type safety
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Frontend side
+* [Tailwindcss](https://tailwindcss.com/) and [ShadUI](https://ui.shadcn.com/) (based on [Radix UI Primitives](https://www.radix-ui.com/primitives)) for UI components
+* A reusable component <ThemeSwitcher> for control the dark mode while respecting RSC and cypress testing
+* Helper function based on [TwMerge](https://github.com/dcastil/tailwind-merge) and [clsx](https://github.com/lukeed/clsx) for combining and splitting extra long tailwind classes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Backend side
+* Nextjs [server actions](https://nextjs.org/docs/app/api-reference/functions/server-actions) to replace traditional API definitions.
+* [Kysely](https://kysely.dev/) for type-safe SQL query building and database migration.
+* [Tsx](https://github.com/privatenumber/tsx) for executing typescript node scripts (such as database migrator) while respecting the project structure.
+* Dotenv for executing scripts while loading env vars.
+* PostgreSQL database driver.
 
-## Deploy on Vercel
+### Testing
+* Unit testing with [Jest](https://jestjs.io/).
+* Component testing with Jest & [React Testing Library](https://testing-library.com/).
+* End to end testing with [Cypress](https://www.cypress.io/) (with [official docker image](https://github.com/cypress-io/cypress-docker-images)).
+* Eslint plugins and related project & typescript configurations for Jest & Cypress.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## What's next?
+* Different branches for minimal, without-db, without-e2e-testing
