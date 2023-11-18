@@ -29,14 +29,6 @@ export default function RootLayout({
 
   let value = (
     <html lang="en">
-      <head>
-        <script
-          /* eslint react/no-danger:off */
-          dangerouslySetInnerHTML={{
-            __html: constants.SCRIPT_FOR_THEME_AUTOSWITCH,
-          }}
-        />
-      </head>
       <body className={cn(fontSans.variable)}>{children}</body>
     </html>
   )

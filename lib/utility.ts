@@ -18,7 +18,7 @@ const slogger = pino({
 // For client/browser logging output
 const clogger = pino({
   name: "scaffold",
-  level: "debug",
+  level: "trace",
 })
 
 export { cn, delay, slogger, clogger }

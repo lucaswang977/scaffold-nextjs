@@ -37,7 +37,7 @@ const setCookieTheme = (themeInCookie: ThemeType) => {
     setCookie(constants.COOKIE_THEME_NAME, themeInCookie)
   }
 
-  clogger.trace(`Theme set to ${themeInCookie}`)
+  clogger.info(`Theme set to ${themeInCookie}`)
 }
 
 const getThemeNameIcon = (t: ThemeType): [string, JSX.Element] => {
@@ -96,6 +96,26 @@ function useCookieTheme(
 function ThemeSwitcher() {
   const [theme, setTheme] = useCookieTheme("system")
   const [name, icon] = getThemeNameIcon(theme)
+
+  useEffect(() => {
+    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+      const themeInCookie = getCookieTheme()
+      if (e.matches) {
+        if (themeInCookie === "system")
+          document.documentElement.classList.add("dark")
+      } else if (themeInCookie === "system")
+        document.documentElement.classList.remove("dark")
+    }
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", handleSystemThemeChange)
+
+    return () => {
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .removeEventListener("change", handleSystemThemeChange)
+    }
+  }, [])
 
   return (
     <div className="flex gap-2">
