@@ -4,6 +4,7 @@ import {
   todoItemDelete,
   todoItemMarkFinished,
 } from "@/l/actions"
+import db from "@/l/dbconn"
 
 import "@testing-library/jest-dom"
 
@@ -44,4 +45,8 @@ describe("Server actions test", () => {
       expect(result.find((i) => i.id === testItemId)).toBeUndefined()
     }
   })
+})
+
+afterAll(async () => {
+  await db.destroy()
 })

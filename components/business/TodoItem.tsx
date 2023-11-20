@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/c/shadui/button"
-import { Checkbox } from "@/c/shadui/checkbox"
+import Checkbox from "@/c/shadui/checkbox"
 import { Todo } from "@/l/types"
 import { cn } from "@/l/utility"
 import dayjs from "dayjs"
