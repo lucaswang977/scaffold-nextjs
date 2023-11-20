@@ -30,7 +30,7 @@ describe("TodoItem Component", () => {
     )
 
     expect(screen.getByText(/todo item/)).toBeInTheDocument()
-    fireEvent.click(screen.getByTestId("remove-button"))
-    fireEvent.click(screen.getByTestId("finish-checkbox"))
+    fireEvent.click(screen.getByTestId("todo-remove"))
+    fireEvent.click(screen.getByTestId("todo-finish"))
   })
 })
